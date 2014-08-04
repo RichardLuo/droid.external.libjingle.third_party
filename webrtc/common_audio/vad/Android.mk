@@ -12,7 +12,7 @@ include $(CLEAR_VARS)
 include $(LOCAL_PATH)/../../../../android_common.mk
 
 LOCAL_MODULE := libwebrtc_vad
-
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_C_INCLUDES := \

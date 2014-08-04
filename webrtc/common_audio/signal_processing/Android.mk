@@ -13,6 +13,7 @@ include $(LOCAL_PATH)/../../../../android_common.mk
 
 LOCAL_MODULE := libwebrtc_spl
 LOCAL_MODULE_TAGS := optional
+LOCAL_PRELINK_MODULE := false
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH) \

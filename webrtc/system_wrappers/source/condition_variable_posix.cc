@@ -19,6 +19,10 @@
 
 #include "critical_section_posix.h"
 
+#ifdef WEBRTC_ANDROID
+#define pthread_condattr_setclock(...) 0
+#endif
+
 namespace webrtc {
 
 ConditionVariableWrapper* ConditionVariablePosix::Create() {

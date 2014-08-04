@@ -47,10 +47,10 @@ include $(BUILD_HOST_STATIC_LIBRARY)
 # Device static library
 include $(CLEAR_VARS)
 
-ifeq ($(TARGET_ARCH),arm)
-LOCAL_NDK_VERSION := 4
-LOCAL_SDK_VERSION := 8
-endif
+# ifeq ($(TARGET_ARCH),arm)
+# LOCAL_NDK_VERSION := 4
+# LOCAL_SDK_VERSION := 8
+# endif
 
 LOCAL_SRC_FILES := $(common_SRC_FILES)
 LOCAL_CFLAGS += $(common_CFLAGS)
@@ -64,10 +64,10 @@ include $(BUILD_STATIC_LIBRARY)
 # Device shared library
 include $(CLEAR_VARS)
 
-ifeq ($(TARGET_ARCH),arm)
-LOCAL_NDK_VERSION := 4
-LOCAL_SDK_VERSION := 8
-endif
+# ifeq ($(TARGET_ARCH),arm)
+# LOCAL_NDK_VERSION := 4
+# LOCAL_SDK_VERSION := 8
+# endif
 
 LOCAL_SRC_FILES := $(common_SRC_FILES)
 LOCAL_CFLAGS += $(common_CFLAGS)

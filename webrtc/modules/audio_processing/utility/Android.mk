@@ -11,6 +11,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libwebrtc_apm_utility
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := \
     fft4g.c \

@@ -11,6 +11,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libwebrtc_i420
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 LOCAL_CPP_EXTENSION := .cc
 LOCAL_SRC_FILES := i420.cc
@@ -63,5 +64,12 @@ LOCAL_SHARED_LIBRARIES += \
 	libwebrtc_common_video \
 	libyuv_shared \
 	libwebrtc_yuv \
+
+
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_C_INCLUDES += bionic		# very important!
+LOCAL_C_INCLUDES += external/stlport/stlport 
+LOCAL_SHARED_LIBRARIES += libstlport libdl
+endif
 
 include $(BUILD_SHARED_LIBRARY)

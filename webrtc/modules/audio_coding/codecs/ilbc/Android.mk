@@ -12,6 +12,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := libwebrtc_ilbc
 LOCAL_MODULE_TAGS := optional
+LOCAL_PRELINK_MODULE := false
 
 path_third_party := $(LOCAL_PATH)/../../../../..
 

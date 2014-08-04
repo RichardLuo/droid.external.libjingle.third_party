@@ -14,6 +14,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libwebrtc_aecm
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := \
     echo_control_mobile.c \
@@ -47,6 +48,7 @@ include $(CLEAR_VARS)
 LOCAL_ARM_MODE := arm
 LOCAL_MODULE_CLASS := STATIC_LIBRARIES
 LOCAL_MODULE := libwebrtc_aecm_neon
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 
 AECM_ASM_HEADER := $(intermediates)/aecm_core_neon_offsets.h

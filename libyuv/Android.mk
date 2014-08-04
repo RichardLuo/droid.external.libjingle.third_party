@@ -45,9 +45,13 @@ LOCAL_CFLAGS += -DHAVE_JPEG
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/include \
 					external/jpeg
 
-
 LOCAL_MODULE := libyuv_shared
 LOCAL_MODULE_TAGS := optional
+
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_C_INCLUDES += $(path_third_party)/libjpeg_turbo
+LOCAL_PRELINK_MODULE := false
+endif
 
 include $(BUILD_SHARED_LIBRARY)
 

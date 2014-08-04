@@ -17,8 +17,8 @@ LOCAL_SRC_FILES := \
     cpu_features_android.c \
     map.cc \
     sort.cc \
+	atomic32_posix.cc \
     aligned_malloc.cc \
-    atomic32_posix.cc \
     condition_variable.cc \
     cpu_no_op.cc \
     cpu_features.cc \
@@ -51,6 +51,14 @@ LOCAL_C_INCLUDES := \
     external/webrtc
 
 LOCAL_CFLAGS += '-DWEBRTC_LINUX'
+
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_C_INCLUDES += bionic		# very important!
+LOCAL_C_INCLUDES += external/stlport/stlport 
+LOCAL_SHARED_LIBRARIES += libstlport libdl
+LOCAL_CFLAGS += '-DWEBRTC_ANDROID'
+LOCAL_PRELINK_MODULE := false
+endif
 
 LOCAL_LDLIBS += -lrt -lpthread
 

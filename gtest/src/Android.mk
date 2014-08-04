@@ -26,6 +26,8 @@
 # TODO: The targets below have some redundancy. Check if we cannot
 # condense them using function(s) for the common code.
 
+ifeq ($(TARGET_SIMULATOR),true)
+
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(BUILD_WITH_ASTL),true)
@@ -129,3 +131,5 @@ LOCAL_MODULE := libgtest_main
 LOCAL_MODULE_TAGS := eng
 
 include $(BUILD_STATIC_LIBRARY)
+
+endif

@@ -27,28 +27,52 @@ Atomic32::~Atomic32() {
 }
 
 WebRtc_Word32 Atomic32::operator++() {
+#ifndef WEBRTC_ANDROID
   return __sync_fetch_and_add(&value_, 1) + 1;
+#else
+  return ++value_;
+#endif
 }
 
 WebRtc_Word32 Atomic32::operator--() {
+#ifndef WEBRTC_ANDROID
   return __sync_fetch_and_sub(&value_, 1) - 1;
+#else
+  return --value_;
+#endif  
 }
 
 WebRtc_Word32 Atomic32::operator+=(WebRtc_Word32 value) {
+#ifndef WEBRTC_ANDROID
   WebRtc_Word32 return_value = __sync_fetch_and_add(&value_, value);
   return_value += value;
   return return_value;
+#else
+  return (value_ += value);
+#endif  
 }
 
 WebRtc_Word32 Atomic32::operator-=(WebRtc_Word32 value) {
+#ifndef WEBRTC_ANDROID
   WebRtc_Word32 return_value = __sync_fetch_and_sub(&value_, value);
   return_value -= value;
   return return_value;
+#else
+  return (value_ -= value);
+#endif  
 }
 
 bool Atomic32::CompareExchange(WebRtc_Word32 new_value,
                                WebRtc_Word32 compare_value) {
+#ifndef WEBRTC_ANDROID
   return __sync_bool_compare_and_swap(&value_, compare_value, new_value);
+#else
+  if (value_ == compare_value) {
+      value_ = new_value;
+      return true;
+  }
+  return false;
+#endif  
 }
 
 WebRtc_Word32 Atomic32::Value() const {

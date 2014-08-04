@@ -34,9 +34,6 @@ LOCAL_SRC_FILES := \
 	incoming_video_stream.cc \
 	video_render_frames.cc \
 	video_render_impl.cc \
-	linux/video_render_linux_impl.cc  \
-	linux/video_x11_channel.cc  \
-	linux/video_x11_render.cc
 
 # ./android/video_render_android_impl.cc \
 # ./android/video_render_android_native_opengl2.cc \
@@ -47,15 +44,31 @@ LOCAL_CFLAGS := \
 	$(WEBRTC_CFLAGS) \
 	'-DDYNAMIC_ANNOTATIONS_ENABLED=1' \
 	'-DWTF_USE_DYNAMIC_ANNOTATIONS=1' \
-	'-DWEBRTC_LINUX' \
-	'-DLINUX' \
-	'-UANDROID' \
+	'-UWEBRTC_LINUX' \
 	'-UWEBRTC_ANDROID' \
 	'-DWEBRTC_INCLUDE_INTERNAL_VIDEO_RENDER' \
 
 LOCAL_SHARED_LIBRARIES += \
 	libwebrtc_system_wrappers \
 	libwebrtc_common_video
+
+
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_C_INCLUDES += bionic		# very important!
+LOCAL_C_INCLUDES += external/stlport/stlport 
+LOCAL_SHARED_LIBRARIES += libstlport libdl
+LOCAL_PRELINK_MODULE := false
+else
+LOCAL_CFLAGS += \
+	'-DLINUX' \
+	'-DWEBRTC_LINUX' \
+	'-UANDROID'
+
+LOCAL_SRC_FILES += 	\
+	linux/video_render_linux_impl.cc  \
+	linux/video_x11_channel.cc  \
+	linux/video_x11_render.cc
+endif
 
 LOCAL_LDLIBS += -lrt                 
 # LOCAL_LDLIBS += -L/usr/lib/x86_64-linux-gnu/ -lXext

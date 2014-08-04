@@ -90,7 +90,14 @@ LOCAL_SHARED_LIBRARIES += \
 	libwebrtc_resampler \
 	libwebrtc_media_file \
 
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_C_INCLUDES += bionic		# very important!
+LOCAL_C_INCLUDES += external/stlport/stlport 
+LOCAL_SHARED_LIBRARIES += libstlport libdl
+else
 LOCAL_LDLIBS += \
 	-lrt
+
+endif
 
 include $(BUILD_SHARED_LIBRARY)

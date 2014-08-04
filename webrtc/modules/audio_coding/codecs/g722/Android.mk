@@ -11,6 +11,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libwebrtc_g722
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 
 path_third_party := $(LOCAL_PATH)/../../../../..

@@ -18,6 +18,11 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+#ifdef WEBRTC_ANDROID
+#define pthread_condattr_setclock(...) 0
+#endif
+
+
 namespace webrtc {
 
 const long int E6 = 1000000;

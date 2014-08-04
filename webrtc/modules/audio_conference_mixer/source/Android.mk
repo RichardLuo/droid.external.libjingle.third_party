@@ -12,6 +12,7 @@ include $(CLEAR_VARS)
 include $(LOCAL_PATH)/../../../../../android_common.mk
 
 LOCAL_MODULE := libwebrtc_audio_conference_mixer
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 LOCAL_CPP_EXTENSION := .cc
 
@@ -41,5 +42,11 @@ LOCAL_SHARED_LIBRARIES += \
 	libwebrtc_system_wrappers \
 	libwebrtc_apm \
 	libwebrtc_utility \
+
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_C_INCLUDES += bionic		# very important!
+LOCAL_C_INCLUDES += external/stlport/stlport 
+LOCAL_SHARED_LIBRARIES += libstlport libdl
+endif
 
 include $(BUILD_SHARED_LIBRARY)

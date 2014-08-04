@@ -11,6 +11,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libwebrtc_video_processing
+LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 LOCAL_CPP_EXTENSION := .cc
 
@@ -55,6 +56,12 @@ LOCAL_SHARED_LIBRARIES += \
     libwebrtc_spl \
     libwebrtc_system_wrappers \
 
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_C_INCLUDES += bionic		# very important!
+LOCAL_C_INCLUDES += external/stlport/stlport 
+LOCAL_SHARED_LIBRARIES += libstlport libdl
+else
 LOCAL_LDLIBS += -lrt
+endif
 
 include $(BUILD_SHARED_LIBRARY)

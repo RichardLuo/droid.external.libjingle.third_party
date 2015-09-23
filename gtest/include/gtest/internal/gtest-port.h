@@ -246,7 +246,7 @@
 # endif
 #elif defined __linux__
 # define GTEST_OS_LINUX 1
-# if defined __ANDROID__
+# if defined __ANDROID__ && !defined (ANDROID)
 #  define GTEST_OS_LINUX_ANDROID 1
 # endif
 #elif defined __MVS__

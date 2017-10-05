@@ -28,7 +28,7 @@
 //    Begin and end of function calls
 //    Counters
 //
-// Events are issued against categories. Whereas LOG's
+// Events are issued against categories. Whereas BLOG's
 // categories are statically defined, TRACE categories are created
 // implicitly with a string. For example:
 //   TRACE_EVENT_INSTANT0("MY_SUBSYSTEM", "SomeImportantEvent")

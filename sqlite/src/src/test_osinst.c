@@ -30,7 +30,7 @@
 ** The binary log files are read using a virtual table implementation
 ** also contained in this file. 
 **
-** CREATING LOG FILES:
+** CREATING BLOG FILES:
 **
 **       int sqlite3_vfslog_new(
 **         const char *zVfs,          // Name of new VFS
@@ -40,13 +40,13 @@
 **
 **       int sqlite3_vfslog_finalize(const char *zVfs);
 **
-** ANNOTATING LOG FILES:
+** ANNOTATING BLOG FILES:
 **
 **   To write an arbitrary message into a log file:
 **
 **       int sqlite3_vfslog_annotate(const char *zVfs, const char *zMsg);
 **
-** READING LOG FILES:
+** READING BLOG FILES:
 **
 **   Log files are read using the "vfslog" virtual table implementation
 **   in this file. To register the virtual table with SQLite, use:

@@ -126,7 +126,7 @@ int main(int argc, char **argv){
     "\n"
     "    -db      DATABASE-FILE  (database file to operate on)\n"
     "    -script  SCRIPT-FILE    (script file to read sql from)\n"
-    "    -log     LOG-FILE       (log file to create)\n"
+    "    -log     BLOG-FILE       (log file to create)\n"
     "    -logdata                (log all data to log file)\n"
     "\n"
     "  Options -db, -script and -log are compulsory\n"

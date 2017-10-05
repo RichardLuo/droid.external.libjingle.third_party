@@ -61,7 +61,7 @@ string GetCapturedTestStderr();
 #undef ERROR  // defend against promiscuous windows.h
 static const LogLevel ERROR = LOGLEVEL_ERROR;
 
-// Receives copies of all LOG(ERROR) messages while in scope.  Sample usage:
+// Receives copies of all BLOG(ERROR) messages while in scope.  Sample usage:
 //   {
 //     ScopedMemoryLog log;  // constructor registers object as a log sink
 //     SomeRoutineThatMayLogMessages();

@@ -663,7 +663,7 @@ class LIBPROTOBUF_EXPORT LogMessage {
   std::string message_;
 };
 
-// Used to make the entire "LOG(BLAH) << etc." expression have a void return
+// Used to make the entire "BLOG(BLAH) << etc." expression have a void return
 // type and print a newline after each message.
 class LIBPROTOBUF_EXPORT LogFinisher {
  public:

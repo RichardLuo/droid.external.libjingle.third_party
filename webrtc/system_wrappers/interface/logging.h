@@ -19,22 +19,22 @@
 // approaching a frame or packet frequency, use LS_VERBOSE if necessary, or
 // preferably, do not log at all.
 
-//   LOG(...) an ostream target that can be used to send formatted
+//   BLOG(...) an ostream target that can be used to send formatted
 // output to a variety of logging targets, such as debugger console, stderr,
 // file, or any StreamInterface.
 //   The severity level passed as the first argument to the LOGging
 // functions is used as a filter, to limit the verbosity of the logging.
 //   Static members of LogMessage documented below are used to control the
 // verbosity and target of the output.
-//   There are several variations on the LOG macro which facilitate logging
+//   There are several variations on the BLOG macro which facilitate logging
 // of common error conditions, detailed below.
 
-// LOG(sev) logs the given stream at severity "sev", which must be a
+// BLOG(sev) logs the given stream at severity "sev", which must be a
 //     compile-time constant of the LoggingSeverity type, without the namespace
 //     prefix.
-// LOG_V(sev) Like LOG(), but sev is a run-time variable of the LoggingSeverity
+// LOG_V(sev) Like BLOG(), but sev is a run-time variable of the LoggingSeverity
 //     type (basically, it just doesn't prepend the namespace).
-// LOG_F(sev) Like LOG(), but includes the name of the current function.
+// LOG_F(sev) Like BLOG(), but includes the name of the current function.
 
 // Additional helper macros added by WebRTC:
 // LOG_API is a shortcut for API call logging. Pass in the input parameters of
@@ -90,7 +90,7 @@ class LogMessage {
 // Macros which automatically disable logging when WEBRTC_LOGGING == 0
 //////////////////////////////////////////////////////////////////////
 
-#ifndef LOG
+#ifndef BLOG
 #if defined(WEBRTC_LOGGING)
 
 // The following non-obvious technique for implementation of a
@@ -108,8 +108,10 @@ class LogMessageVoidify {
   void operator&(std::ostream&) { }
 };
 
-#define LOG(sev) \
+#ifndef BLOG
+#define BLOG(sev) \
     webrtc::LogMessage(__FILE__, __LINE__, webrtc::sev).stream()
+#endif
 
 // The _V version is for when a variable is passed in.  It doesn't do the
 // namespace concatination.
@@ -118,9 +120,9 @@ class LogMessageVoidify {
 
 // The _F version prefixes the message with the current function name.
 #if (defined(__GNUC__) && defined(_DEBUG)) || defined(WANT_PRETTY_LOG_F)
-#define LOG_F(sev) LOG(sev) << __PRETTY_FUNCTION__ << ": "
+#define LOG_F(sev) BLOG(sev) << __PRETTY_FUNCTION__ << ": "
 #else
-#define LOG_F(sev) LOG(sev) << __FUNCTION__ << ": "
+#define LOG_F(sev) BLOG(sev) << __FUNCTION__ << ": "
 #endif
 
 #else  // !defined(WEBRTC_LOGGING)
@@ -128,11 +130,11 @@ class LogMessageVoidify {
 // Hopefully, the compiler will optimize away some of this code.
 // Note: syntax of "1 ? (void)0 : LogMessage" was causing errors in g++,
 //   converted to "while (false)"
-#define LOG(sev) \
+#define BLOG(sev) \
   while (false)webrtc::LogMessage(NULL, 0, webrtc::sev).stream()
 #define LOG_V(sev) \
   while (false) webrtc::LogMessage(NULL, 0, sev).stream()
-#define LOG_F(sev) LOG(sev) << __FUNCTION__ << ": "
+#define LOG_F(sev) BLOG(sev) << __FUNCTION__ << ": "
 
 #endif  // !defined(WEBRTC_LOGGING)
 
@@ -143,7 +145,7 @@ class LogMessageVoidify {
 #define LOG_API3(v1, v2, v3) LOG_API2(v1, v2) \
     << ", " << #v3 << "=" << v3
 
-#define LOG_FERR0(sev, func) LOG(sev) << #func << " failed"
+#define LOG_FERR0(sev, func) BLOG(sev) << #func << " failed"
 #define LOG_FERR1(sev, func, v1) LOG_FERR0(sev, func) \
     << ": " << #v1 << "=" << v1
 #define LOG_FERR2(sev, func, v1, v2) LOG_FERR1(sev, func, v1) \
@@ -151,7 +153,7 @@ class LogMessageVoidify {
 #define LOG_FERR3(sev, func, v1, v2, v3) LOG_FERR2(sev, func, v1, v2) \
     << ", " << #v3 << "=" << v3
 
-#endif  // LOG
+#endif  // BLOG
 
 }  // namespace webrtc
 

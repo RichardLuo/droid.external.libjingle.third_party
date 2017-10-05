@@ -13,7 +13,7 @@
 ** This file contains the implementation of a write-ahead log (WAL) used in 
 ** "journal_mode=WAL" mode.
 **
-** WRITE-AHEAD LOG (WAL) FILE FORMAT
+** WRITE-AHEAD BLOG (WAL) FILE FORMAT
 **
 ** A WAL file consists of a header followed by zero or more "frames".
 ** Each frame records the revised content of a single page from the

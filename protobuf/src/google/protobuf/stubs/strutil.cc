@@ -238,7 +238,7 @@ void JoinStrings(const vector<string>& components,
 //    result is truncated to 8 bits.
 //
 //    The second call stores its errors in a supplied string vector.
-//    If the string vector pointer is NULL, it reports the errors with LOG().
+//    If the string vector pointer is NULL, it reports the errors with BLOG().
 // ----------------------------------------------------------------------
 
 #define IS_OCTAL_DIGIT(c) (((c) >= '0') && ((c) <= '7'))
@@ -389,7 +389,7 @@ int UnescapeCEscapeSequences(const char* source, char* dest,
 //    to be the same.
 //
 //    The second call stores its errors in a supplied string vector.
-//    If the string vector pointer is NULL, it reports the errors with LOG().
+//    If the string vector pointer is NULL, it reports the errors with BLOG().
 //
 //    In the first and second calls, the length of dest is returned. In the
 //    the third call, the new string is returned.

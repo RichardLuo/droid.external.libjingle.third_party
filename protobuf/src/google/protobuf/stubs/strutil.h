@@ -210,7 +210,7 @@ inline string JoinStrings(const vector<string>& components,
 //    contain the three bytes 0xE2, 0x80, and 0x99).
 //
 //    Errors: In the first form of the call, errors are reported with
-//    LOG(ERROR). The same is true for the second form of the call if
+//    BLOG(ERROR). The same is true for the second form of the call if
 //    the pointer to the string vector is NULL; otherwise, error
 //    messages are stored in the vector. In either case, the effect on
 //    the dest array is not defined, but rest of the source will be
@@ -230,7 +230,7 @@ LIBPROTOBUF_EXPORT int UnescapeCEscapeSequences(const char* source, char* dest,
 //    to be the same.
 //
 //    The second call stores its errors in a supplied string vector.
-//    If the string vector pointer is NULL, it reports the errors with LOG().
+//    If the string vector pointer is NULL, it reports the errors with BLOG().
 //
 //    In the first and second calls, the length of dest is returned. In the
 //    the third call, the new string is returned.

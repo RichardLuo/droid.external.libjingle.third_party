@@ -17,9 +17,11 @@ extern "C" {
 
 #if !defined(YUV_DISABLE_ASM) && defined(__mips__)
 #ifdef HAS_COPYROW_MIPS
+#include <string.h>
 extern "C" void  memcpy_MIPS(uint8* dst, const uint8* src, int count);
 void CopyRow_MIPS(const uint8* src, uint8* dst, int count) {
-  memcpy_MIPS(dst, src, count);
+  //memcpy_MIPS(dst, src, count);
+  memcpy(dst, src, count);
 }
 #endif  // HAS_COPYROW_MIPS
 #endif  // __mips__

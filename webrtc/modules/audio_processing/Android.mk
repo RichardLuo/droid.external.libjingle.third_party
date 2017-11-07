@@ -15,7 +15,6 @@ LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 LOCAL_CPP_EXTENSION := .cc
 LOCAL_SRC_FILES := \
-    $(call all-proto-files-under, .) \
     audio_buffer.cc \
     audio_processing_impl.cc \
     echo_cancellation_impl.cc \
@@ -27,6 +26,7 @@ LOCAL_SRC_FILES := \
     splitting_filter.cc \
     processing_component.cc \
     voice_detection_impl.cc
+    #$(call all-proto-files-under, .) \
 
 # Flags passed to both C and C++ files.
 LOCAL_CFLAGS := \

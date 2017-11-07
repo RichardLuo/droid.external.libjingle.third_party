@@ -231,7 +231,7 @@ extern "C" {
 
 // The following are available on Mips platforms
 #if !defined(YUV_DISABLE_ASM) && defined(__mips__)
-#define HAS_COPYROW_MIPS
+//#define HAS_COPYROW_MIPS
 #if defined(__mips_dsp) && (__mips_dsp_rev >= 2)
 #define HAS_SPLITUVROW_MIPS_DSPR2
 #define HAS_MIRRORROW_MIPS_DSPR2
